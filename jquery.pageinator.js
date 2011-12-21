@@ -13,51 +13,66 @@
             numberOfPages     = Math.ceil(numberOfItems / settings.itemsPerPage),
             currentPage,
             destinationPage,
-            $pageList;
+            $pageList,
+            $previousPageLink,
+            $nextPageLink,
+            pageFromURL       = location.hash;
         
         if (numberOfPages > 1) {
+            $itemContainer.after('<div id="pgn-page-list"><span id="pgn-page-picker-previous">&lt;</span><span id="pgn-page-picker-next">&gt;</span></div>');
+            $pageList = $('div#pgn-page-list');
+            $previousPageLink = $('span#pgn-page-picker-previous');
+            $nextPageLink = $('span#pgn-page-picker-next');
             for (var i = 1; i <= numberOfPages; i++) {
-                $pageList.append('<span id="page_' + i + '" data-page="' + i + '">' + i + '</span>');
+                $pageList.append('<span id="pgn-page-picker-' + i + '" data-page="' + i + '">' + i + '</span>');
             }
         }
+        
+        $itemContainer.height($items.outerHeight() * (settings.itemsPerPage / 1.6));
         
         /**
          * Goes to a specified page.
          * @param {integer}                      The page number to go to.
-         * @return {bool}                        Whether the supplied page number was valid or not.
          */
         function showPage(pageNumber) {
             if (pageNumber > 0 && pageNumber <= numberOfPages) {
                 currentPage = pageNumber;
-                $pageList.children().removeClass('.pgn-picker-current');
-                $pageList.children('#page_' + pageNumber).addClass('.pgn-picker-current');
+                location.hash = '#' + pageNumber;
+                $pageList.children().removeClass('pgn-page-picker-current');
+                $pageList.children('#pgn-page-picker-' + pageNumber).addClass('pgn-page-picker-current');
+                $previousPageLink.attr('data-page', parseInt(pageNumber) - 1);
+                $nextPageLink.attr('data-page', parseInt(pageNumber) + 1);
                 $items.hide();
-                // TODO show prev+next buttons AND set their data-page values correctly.
-                var lastItemToDisplay = pageNumber * settings.itemPerPage,
-                    firstItemToDisplay = lastItemToDisplay - settings.itemPerPage +  1;
+                var lastItemToDisplay = pageNumber * settings.itemsPerPage,
+                    firstItemToDisplay = lastItemToDisplay - settings.itemsPerPage +  1;
                 $.each($items, function(itemNumber, item) {
                     itemNumber++;
                     if (itemNumber >= firstItemToDisplay && itemNumber <= lastItemToDisplay) {
                         $(item).show();
                     }
-                }
-                return true;
-            } else {
-                return false;
+                });
             }
         }
         
-        showPage(1);
+        if (pageFromURL !== '') {
+            showPage(pageFromURL.substring(1));
+        } else {
+            showPage(1);
+        }
         
-        $pageList.click(function () {
+        $(window).hashchange(function(e) {
+            e.preventDefault();
+        });
+        
+        $pageList.on('click', 'span', function() {
             showPage($(this).attr('data-page'));
         });
         
-        $(document).keyup(function (e) {
+        $(document).keyup(function(e) {
             if (e.keyCode == '37') {
-                showPage(currentPage - 1);
+                showPage(parseInt(currentPage) - 1);
             } else if (e.keyCode == '39') {
-                showPage(currentPage + 1);
+                showPage(parseInt(currentPage) + 1);
             }
         });
         

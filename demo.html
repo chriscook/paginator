@@ -60,16 +60,17 @@
                 <p>Text text text text text text text text.</p>
             </div>
             <div>
-                <h2>Title</h2>
+                <h2>Title last one</h2>
                 <p>Text text text text text text text text.</p>
             </div>
         </div>
         
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="jquery.onhashchange.js"></script>
         <script src="jquery.pageinator.js"></script>
         <script>
             $(document).ready(function() {
-                $('div#pgn-container').pageinator();
+                $('div#pgn-container').pageinator({itemsPerPage:2});
             });
         </script>
         

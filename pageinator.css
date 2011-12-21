@@ -1,6 +1,37 @@
 /*-----[Pageinator structure]-------------------------------------------*/
 
+#pgn-container {
+    overflow: auto;
+    width: 78%;
+    padding: 1em 1%;
+    margin: 0 auto;
+    background: #EEE;
+}
 
+    #pgn-container > div {
+        float: left;
+        width: 48%;
+        height: 10em;
+        margin: 1em 1%;
+        background: #DDD;
+    }
     
+#pgn-page-list {
+    margin-top: 1em;
+}
+    
+    #pgn-page-list > span {
+        padding: 0 0.5em;
+        margin: 0 0.5em;
+        text-align: center;
+        font-size: 2em;
+        background: #EEE;
+        cursor: pointer;
+    }
+    
+    #pgn-page-list > span.pgn-page-picker-current {
+        background: #DDD;
+    }
+
 /*-----[Customisable styles]--------------------------------------------*/
 
