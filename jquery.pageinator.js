@@ -7,6 +7,8 @@
         var settings = $.extend({
             itemsPerPage       : 2,
             keyboardNavigation : false,
+            prevButtonContent  : '&lt;',
+            nextButtonContent  : '&rt;',
             fixedHeight        : false,
             heightDivisor      : 1
         }, options),
@@ -62,7 +64,7 @@
         }
         
         if (numberOfPages > 1) {
-            $itemContainer.after('<ul id="pgn-page-list"><li id="pgn-page-picker-previous">&lt;</li><li id="pgn-page-picker-next">&gt;</li></ul>');
+            $itemContainer.after('<ul id="pgn-page-list"><li id="pgn-page-picker-previous">' + settings.prevButtonContent + '</li><li id="pgn-page-picker-next">' + settings.nextButtonContent + '</li></ul>');
             $pageList = $('#pgn-page-list');
             $previousPageLink = $('#pgn-page-picker-previous');
             $nextPageLink = $('#pgn-page-picker-next');

@@ -30,6 +30,8 @@ Additional settings can be used to customise __Pageinator__, and should be added
 
 + `itemsPerPage` sets how many items appear per page (default `6`).
 + `keyboardNavigation` toggles whether or not the user can use the left and right arrow keys to move through pages (default `false`).
++ `prevButtonContent` allows you to change the content of the previous page button (default `&lt;`).
++ `nextButtonContent` allows you to change the content of the next page button (default `&gt;`).
 + `fixedHeight` toggles whether or not the container should have a fixed height (default `false`).
 + `heightDivisor` sets a number to divide the itemsPerPage value by before multiplying it with the items' height when setting a fixed height for the container (only active when `fixedHeight` is `true`; default `1`).
     
