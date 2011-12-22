@@ -13,7 +13,8 @@
         }
     ],
     "dependencies": {
-        "jquery": ">1.2.3"
+        "jquery": ">1.2.3",
+        "hashchange": ">1.3"
     },
     "description": "Pageinates a collection of items.",
     "keywords": [
@@ -24,6 +25,7 @@
     ],
     "homepage": "http://chris-cook.co.uk/",
     "files": [
-        "jquery.pageinator.js"
+        "jquery.pageinator.js",
+        "jquery.hashchange.js"
     ]
 }

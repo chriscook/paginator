@@ -75,6 +75,10 @@
             showPage(1);
         }
         
+        $(window).hashchange(function() {
+            showPage(location.hash.substring(1));
+        });
+        
         $pageList.on('click', 'li', function() {
             showPage($(this).attr('data-page'));
         });

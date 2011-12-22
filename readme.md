@@ -8,9 +8,13 @@ Version 0.1.0
 
 __Pageinator__ is a _jQuery_ plug-in to pageinate a number of items.
 
+## Dependencies
+
++ _hashchange_
+
 ### How to use it
 
-1. Add `jquery.pageinator.js` to your project, along with _jQuery_.
+1. Add `jquery.pageinator.js` to your project, along with _jQuery_ and _hashchange_.
 2. Add your items to your page, with a container element.
 3. Add the following _jQuery_ to your page, to be executed on load:
 
