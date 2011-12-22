@@ -9,6 +9,7 @@
             keyboardNavigation : false,
             prevButtonContent  : '&lt;',
             nextButtonContent  : '&gt;',
+            pageButtonClass    : false,
             fixedHeight        : false,
             heightDivisor      : 1
         }, options),
@@ -78,6 +79,9 @@
             $nextPageLink = $('#pgn-page-picker-next');
             for (i = 1; i <= numberOfPages; i++) {
                 $pageList.append('<li id="pgn-page-picker-' + i + '" data-page="' + i + '">' + i + '</li>');
+            }
+            if (settings.pageButtonClass) {
+                $pageList.children().addClass(settings.pageButtonClass);
             }
         }
         
