@@ -29,10 +29,12 @@
             if (pageNumber > 0 && pageNumber <= numberOfPages) {
                 currentPage = pageNumber;
                 location.hash = '#' + pageNumber;
-                $pageList.children().removeClass('pgn-page-picker-current');
-                $pageList.children('#pgn-page-picker-' + pageNumber).addClass('pgn-page-picker-current');
-                $previousPageLink.attr('data-page', parseInt(pageNumber, 10) - 1);
-                $nextPageLink.attr('data-page', parseInt(pageNumber, 10) + 1);
+                if (numberOfPages > 1) {
+                    $pageList.children().removeClass('pgn-page-picker-current');
+                    $pageList.children('#pgn-page-picker-' + pageNumber).addClass('pgn-page-picker-current');
+                    $previousPageLink.attr('data-page', parseInt(pageNumber, 10) - 1);
+                    $nextPageLink.attr('data-page', parseInt(pageNumber, 10) + 1);
+                }
                 $items.hide();
                 var lastItemToDisplay = pageNumber * settings.itemsPerPage,
                     firstItemToDisplay = lastItemToDisplay - settings.itemsPerPage +  1;
