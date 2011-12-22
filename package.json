@@ -17,14 +17,13 @@
     },
     "description": "Pageinates a collection of items.",
     "keywords": [
-        "keyboard",
-        "touch",
-        "text",
-        "input"
+        "pages",
+        "pageination",
+        "navigation",
+        "sort"
     ],
     "homepage": "http://chris-cook.co.uk/",
     "files": [
-        "jquery.pageinator.js",
-        "pageinator.css"
+        "jquery.pageinator.js"
     ]
 }

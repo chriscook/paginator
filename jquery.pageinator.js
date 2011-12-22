@@ -1,34 +1,25 @@
 (function ($) {
     
-    "use strict";
+    'use strict';
     
     $.fn.pageinator = function (options) {
         
         var settings = $.extend({
-            'itemsPerPage'    : 6
+            itemsPerPage       : 2,
+            keyboardNavigation : false,
+            fixedHeight        : false,
+            heightDivisor      : 1
         }, options),
-            $itemContainer    = this,
-            $items            = $itemContainer.children(),
-            numberOfItems     = $items.length,
-            numberOfPages     = Math.ceil(numberOfItems / settings.itemsPerPage),
+            $itemContainer     = this,
+            $items             = $itemContainer.children(),
+            numberOfItems      = $items.length,
+            numberOfPages      = Math.ceil(numberOfItems / settings.itemsPerPage),
             currentPage,
-            destinationPage,
             $pageList,
             $previousPageLink,
             $nextPageLink,
-            pageFromURL       = location.hash;
-        
-        if (numberOfPages > 1) {
-            $itemContainer.after('<div id="pgn-page-list"><span id="pgn-page-picker-previous">&lt;</span><span id="pgn-page-picker-next">&gt;</span></div>');
-            $pageList = $('div#pgn-page-list');
-            $previousPageLink = $('span#pgn-page-picker-previous');
-            $nextPageLink = $('span#pgn-page-picker-next');
-            for (var i = 1; i <= numberOfPages; i++) {
-                $pageList.append('<span id="pgn-page-picker-' + i + '" data-page="' + i + '">' + i + '</span>');
-            }
-        }
-        
-        $itemContainer.height($items.outerHeight() * (settings.itemsPerPage / 1.6));
+            pageFromURL        = location.hash,
+            i                  = 0;
         
         /**
          * Goes to a specified page.
@@ -40,8 +31,8 @@
                 location.hash = '#' + pageNumber;
                 $pageList.children().removeClass('pgn-page-picker-current');
                 $pageList.children('#pgn-page-picker-' + pageNumber).addClass('pgn-page-picker-current');
-                $previousPageLink.attr('data-page', parseInt(pageNumber) - 1);
-                $nextPageLink.attr('data-page', parseInt(pageNumber) + 1);
+                $previousPageLink.attr('data-page', parseInt(pageNumber, 10) - 1);
+                $nextPageLink.attr('data-page', parseInt(pageNumber, 10) + 1);
                 $items.hide();
                 var lastItemToDisplay = pageNumber * settings.itemsPerPage,
                     firstItemToDisplay = lastItemToDisplay - settings.itemsPerPage +  1;
@@ -54,26 +45,38 @@
             }
         }
         
+        if (settings.keyboardNavigation) {
+            $(document).keyup(function(e) {
+                if (e.keyCode === 37) {
+                    showPage(parseInt(currentPage, 10) - 1);
+                } else if (e.keyCode === 39) {
+                    showPage(parseInt(currentPage, 10) + 1);
+                }
+            });
+        }
+        
+        if (settings.fixedHeight) {
+            $itemContainer.height($items.outerHeight() * (settings.itemsPerPage / settings.heightDivisor));
+        }
+        
+        if (numberOfPages > 1) {
+            $itemContainer.after('<ul id="pgn-page-list"><li id="pgn-page-picker-previous">&lt;</li><li id="pgn-page-picker-next">&gt;</li></ul>');
+            $pageList = $('#pgn-page-list');
+            $previousPageLink = $('#pgn-page-picker-previous');
+            $nextPageLink = $('#pgn-page-picker-next');
+            for (i = 1; i <= numberOfPages; i++) {
+                $pageList.append('<li id="pgn-page-picker-' + i + '" data-page="' + i + '">' + i + '</li>');
+            }
+        }
+        
         if (pageFromURL !== '') {
             showPage(pageFromURL.substring(1));
         } else {
             showPage(1);
         }
         
-        $(window).hashchange(function(e) {
-            e.preventDefault();
-        });
-        
-        $pageList.on('click', 'span', function() {
+        $pageList.on('click', 'li', function() {
             showPage($(this).attr('data-page'));
-        });
-        
-        $(document).keyup(function(e) {
-            if (e.keyCode == '37') {
-                showPage(parseInt(currentPage) - 1);
-            } else if (e.keyCode == '39') {
-                showPage(parseInt(currentPage) + 1);
-            }
         });
         
         return this;

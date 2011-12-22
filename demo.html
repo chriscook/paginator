@@ -4,11 +4,45 @@
 
     <head>
         <title>Pageinator</title>
-        <link rel="stylesheet" type="text/css" href="pageinator.css">
         <style>
             html {
                 font-family: Calibri, Arial, sans-serif;
             }
+            
+            #pgn-container {
+                overflow: auto;
+                width: 78%;
+                padding: 1em 1%;
+                margin: 0 auto;
+                background: #EEE;
+            }
+
+                #pgn-container > div {
+                    float: left;
+                    width: 48%;
+                    height: 10em;
+                    margin: 1em 1%;
+                    background: #DDD;
+                }
+                
+            #pgn-page-list {
+                margin-top: 1em;
+            }
+                
+                #pgn-page-list > li {
+                    padding: 0 0.5em;
+                    margin: 0 0.5em;
+                    text-align: center;
+                    font-size: 2em;
+                    background: #EEE;
+                    cursor: pointer;
+                    list-style-type: none;
+                    float: left;
+                }
+                
+                #pgn-page-list > li.pgn-page-picker-current {
+                    background: #DDD;
+                }
         </style>
     </head>
     
@@ -16,61 +50,55 @@
         
         <div id="pgn-container">
             <div>
-                <h2>Title</h2>
+                <h2>First item</h2>
                 <p>Text text text text text text text text.</p>
             </div>
             <div>
-                <h2>Title</h2>
+                <h2>Second item</h2>
                 <p>Text text text text text text text text.</p>
             </div>
             <div>
-                <h2>Title</h2>
+                <h2>Third item</h2>
                 <p>Text text text text text text text text.</p>
             </div>
             <div>
-                <h2>Title</h2>
+                <h2>Fourth item</h2>
                 <p>Text text text text text text text text.</p>
             </div>
             <div>
-                <h2>Title</h2>
+                <h2>Fifth item</h2>
                 <p>Text text text text text text text text.</p>
             </div>
             <div>
-                <h2>Title</h2>
+                <h2>Sixth item</h2>
                 <p>Text text text text text text text text.</p>
             </div>
             <div>
-                <h2>Title</h2>
+                <h2>Seventh item</h2>
                 <p>Text text text text text text text text.</p>
             </div>
             <div>
-                <h2>Title</h2>
+                <h2>Eighth item</h2>
                 <p>Text text text text text text text text.</p>
             </div>
             <div>
-                <h2>Title</h2>
+                <h2>Ninth item</h2>
                 <p>Text text text text text text text text.</p>
             </div>
             <div>
-                <h2>Title</h2>
-                <p>Text text text text text text text text.</p>
-            </div>
-            <div>
-                <h2>Title</h2>
-                <p>Text text text text text text text text.</p>
-            </div>
-            <div>
-                <h2>Title last one</h2>
+                <h2>Tenth item</h2>
                 <p>Text text text text text text text text.</p>
             </div>
         </div>
         
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="jquery.onhashchange.js"></script>
         <script src="jquery.pageinator.js"></script>
         <script>
             $(document).ready(function() {
-                $('div#pgn-container').pageinator({itemsPerPage:2});
+                $('div#pgn-container').pageinator({
+                    itemsPerPage       : 2,
+                    keyboardNavigation : true
+                });
             });
         </script>
         
