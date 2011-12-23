@@ -33,17 +33,17 @@
                 currentPage = pageNumber;
                 location.hash = '#' + pageNumber;
                 if (numberOfPages > 1) {
-                    $previousPageLink.show();
-                    $nextPageLink.show();
+                    $previousPageLink.removeClass('pgn-page-picker-disabled');
+                    $nextPageLink.removeClass('pgn-page-picker-disabled');
                     $pageList.children().removeClass('pgn-page-picker-current');
                     $pageList.children('#pgn-page-picker-' + pageNumber).addClass('pgn-page-picker-current');
                     $previousPageLink.attr('data-page', parseInt(pageNumber, 10) - 1);
                     $nextPageLink.attr('data-page', parseInt(pageNumber, 10) + 1);
                     if (pageNumber == 1) {
-                        $previousPageLink.hide();
+                        $previousPageLink.addClass('pgn-page-picker-disabled');
                     }
                     if (pageNumber == numberOfPages) {
-                        $nextPageLink.hide();
+                        $nextPageLink.addClass('pgn-page-picker-disabled');
                     }
                 }
                 $items.hide();
@@ -73,13 +73,14 @@
         }
         
         if (numberOfPages > 1) {
-            $itemContainer.after('<ul id="pgn-page-list"><li id="pgn-page-picker-previous">' + settings.prevButtonContent + '</li><li id="pgn-page-picker-next">' + settings.nextButtonContent + '</li></ul>');
+            $itemContainer.after('<ul id="pgn-page-list"><li id="pgn-page-picker-previous">' + settings.prevButtonContent + '</li></ul>');
             $pageList = $('#pgn-page-list');
             $previousPageLink = $('#pgn-page-picker-previous');
-            $nextPageLink = $('#pgn-page-picker-next');
             for (i = 1; i <= numberOfPages; i++) {
                 $pageList.append('<li id="pgn-page-picker-' + i + '" data-page="' + i + '">' + i + '</li>');
             }
+            $pageList.append('<li id="pgn-page-picker-next">' + settings.nextButtonContent + '</li>');
+            $nextPageLink = $('#pgn-page-picker-next');
             if (settings.pageButtonClass) {
                 $pageList.children().addClass(settings.pageButtonClass);
             }

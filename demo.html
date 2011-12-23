@@ -43,6 +43,10 @@
                 #pgn-page-list > li.pgn-page-picker-current {
                     background: #DDD;
                 }
+                
+                #pgn-page-list > li.pgn-page-picker-disabled {
+                    background: #FFF;
+                }
         </style>
     </head>
     
@@ -98,7 +102,8 @@
             $(document).ready(function() {
                 $('div#pgn-container').pageinator({
                     itemsPerPage       : 2,
-                    keyboardNavigation : true
+                    keyboardNavigation : true,
+                    fixedHeight        : true
                 });
             });
         </script>
