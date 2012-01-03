@@ -10,6 +10,7 @@
             prevButtonContent  : '&lt;',
             nextButtonContent  : '&gt;',
             pageButtonClass    : false,
+            fadeRate           : 0,
             fixedHeight        : false,
             heightDivisor      : 1
         }, options),
@@ -29,7 +30,7 @@
          * @param {integer}                      The page number to go to.
          */
         function showPage(pageNumber) {
-            if (pageNumber > 0 && pageNumber <= numberOfPages) {
+            if (pageNumber > 0 && pageNumber <= numberOfPages && pageNumber !== currentPage) {
                 currentPage = pageNumber;
                 location.hash = '#' + pageNumber;
                 if (numberOfPages > 1) {
@@ -46,18 +47,20 @@
                         $nextPageLink.addClass('pgn-page-picker-disabled');
                     }
                 }
-                $items.hide();
                 var lastItemToDisplay = pageNumber * settings.itemsPerPage,
                     firstItemToDisplay = lastItemToDisplay - settings.itemsPerPage +  1;
-                $.each($items, function(itemNumber, item) {
-                    itemNumber++;
-                    if (itemNumber >= firstItemToDisplay && itemNumber <= lastItemToDisplay) {
-                        $(item).show();
-                    }
+                $items.fadeOut(settings.fadeRate).promise().done(function() {
+                    $items.each(function(index, item) {
+                        index++;
+                        if (index >= firstItemToDisplay && index <= lastItemToDisplay) {
+                            $(item).fadeIn(settings.fadeRate);
+                        }
+                    });
                 });
             }
         }
         
+        // Set up keyboard navigation
         if (settings.keyboardNavigation) {
             $(document).keyup(function(e) {
                 if (e.keyCode === 37) {
@@ -68,10 +71,12 @@
             });
         }
         
+        // Set up the container's height
         if (settings.fixedHeight) {
             $itemContainer.height($items.outerHeight() * (settings.itemsPerPage / settings.heightDivisor));
         }
         
+        // Set up the page picker
         if (numberOfPages > 1) {
             $itemContainer.after('<ul id="pgn-page-list"><li id="pgn-page-picker-previous">' + settings.prevButtonContent + '</li></ul>');
             $pageList = $('#pgn-page-list');
@@ -86,16 +91,19 @@
             }
         }
         
+        // Load the initial page
         if (pageFromURL !== '') {
             showPage(pageFromURL.substring(1));
         } else {
             showPage(1);
         }
         
+        // Show a different page when the hash changes
         $(window).hashchange(function() {
             showPage(location.hash.substring(1));
         });
         
+        // Show a different page when the user clicks a page number
         $pageList.on('click', 'li', function() {
             showPage($(this).attr('data-page'));
         });
