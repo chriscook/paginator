@@ -32,6 +32,8 @@ Additional settings can be used to customise __Pageinator__, and should be added
 + `keyboardNavigation`: Whether the pages can be traversed using the left and right arrow keys (default `true`; must be boolean).
 + `prevButtonContent`: The contents of the previous page `li` element (default `&lt;`; must be a string).
 + `nextButtonContent`: The contents of the next page `li` element (default `&gt;`; must be a string).
++ `firstButtonContent`: The contents of the first page `li` element (default `&lt;&lt;`; must be a string).
++ `lastButtonContent`: The contents of the last page `li` element (default `&gt;&gt;`; must be a string).
 + `pageButtonClass`: A custom class name for page button `li` elements (default `false`; must be boolean `false` or a string).
 + `fadeRate`: The rate at which pages fade in and out (default `0`; must be an integer greater than or equal to `0` or the strings `'fast'` or `'slow'`).
 + `fixedHeight`: Whether or not the page container has a fixed height (default `false`; must be boolean).
@@ -43,7 +45,7 @@ An example of these in practice:
         'itemsPerPage'     : 4
     });
 
-__Pageinator__ adds the page picker elements as `li` elements within a `ul`. You can easily customise it using rules for `ul#pgn-page-list` (items within this list are named `li#pgn-page-picker-previous`, `li#pgn-page-picker-next` and `li#pgn-page-picker-x`, where `x` is the page number).
+__Pageinator__ adds the page picker elements as `li` elements within a `ul`. You can easily customise it using rules for `ul#pgn-page-list` (items within this list are named `li#pgn-page-picker-previous`, `li#pgn-page-picker-next`, `li#pgn-page-picker-first`, `li#pgn-page-picker-last` and `li#pgn-page-picker-x`, where `x` is the page number).
 
 ### Where does it work?
 

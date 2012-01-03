@@ -9,6 +9,8 @@
             keyboardNavigation : false,
             prevButtonContent  : '&lt;',
             nextButtonContent  : '&gt;',
+            firstButtonContent : '&lt;&lt;',
+            lastButtonContent  : '&gt;&gt;',
             pageButtonClass    : false,
             fadeRate           : 0,
             fixedHeight        : false,
@@ -22,6 +24,8 @@
             $pageList,
             $previousPageLink,
             $nextPageLink,
+            $firstPageLink,
+            $lastPageLink,
             pageFromURL        = location.hash,
             i                  = 0;
         
@@ -34,17 +38,17 @@
                 currentPage = pageNumber;
                 location.hash = '#' + pageNumber;
                 if (numberOfPages > 1) {
-                    $previousPageLink.removeClass('pgn-page-picker-disabled');
-                    $nextPageLink.removeClass('pgn-page-picker-disabled');
-                    $pageList.children().removeClass('pgn-page-picker-current');
-                    $pageList.children('#pgn-page-picker-' + pageNumber).addClass('pgn-page-picker-current');
                     $previousPageLink.attr('data-page', parseInt(pageNumber, 10) - 1);
                     $nextPageLink.attr('data-page', parseInt(pageNumber, 10) + 1);
+                    $pageList.children().removeClass('pgn-page-picker-current').removeClass('pgn-page-picker-disabled');
+                    $pageList.children('#pgn-page-picker-' + pageNumber).addClass('pgn-page-picker-current');
                     if (pageNumber == 1) {
                         $previousPageLink.addClass('pgn-page-picker-disabled');
+                        $firstPageLink.addClass('pgn-page-picker-disabled');
                     }
                     if (pageNumber == numberOfPages) {
                         $nextPageLink.addClass('pgn-page-picker-disabled');
+                        $lastPageLink.addClass('pgn-page-picker-disabled');
                     }
                 }
                 var lastItemToDisplay = pageNumber * settings.itemsPerPage,
@@ -78,17 +82,21 @@
         
         // Set up the page picker
         if (numberOfPages > 1) {
-            $itemContainer.after('<ul id="pgn-page-list"><li id="pgn-page-picker-previous">' + settings.prevButtonContent + '</li></ul>');
+            $itemContainer.after('<ul id="pgn-page-list"><li id="pgn-page-picker-first">' + settings.firstButtonContent + '</li><li id="pgn-page-picker-previous">' + settings.prevButtonContent + '</li></ul>');
             $pageList = $('#pgn-page-list');
-            $previousPageLink = $('#pgn-page-picker-previous');
             for (i = 1; i <= numberOfPages; i++) {
                 $pageList.append('<li id="pgn-page-picker-' + i + '" data-page="' + i + '">' + i + '</li>');
             }
-            $pageList.append('<li id="pgn-page-picker-next">' + settings.nextButtonContent + '</li>');
-            $nextPageLink = $('#pgn-page-picker-next');
+            $pageList.append('<li id="pgn-page-picker-next">' + settings.nextButtonContent + '</li><li id="pgn-page-picker-last">' + settings.lastButtonContent + '</li>');
             if (settings.pageButtonClass) {
                 $pageList.children().addClass(settings.pageButtonClass);
             }
+            $previousPageLink = $('#pgn-page-picker-previous');
+            $nextPageLink     = $('#pgn-page-picker-next');
+            $firstPageLink    = $('#pgn-page-picker-first');
+            $lastPageLink     = $('#pgn-page-picker-last');
+            $firstPageLink.attr('data-page', 1);
+            $lastPageLink.attr('data-page', numberOfPages);
         }
         
         // Load the initial page
