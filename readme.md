@@ -1,4 +1,4 @@
-Pageinator
+Paginator
 =============
 
 Version 0.1.0
@@ -6,7 +6,7 @@ Version 0.1.0
 
 ### Introduction
 
-__Pageinator__ is a _jQuery_ plug-in to pageinate a number of items.
+__Paginator__ is a _jQuery_ plug-in to spread a number of items over various pages. The items to be paginated must be within a container element (for example, a `div`), upon which the plug-in is called. If the settings provided to the plug-in mean that more than one page is neccessary, it inserts a `ul` element immediately after the container which contains at least six `li` elements; buttons to go to the first page, the last page, the previous page, the next page, and each individual page between.
 
 ## Dependencies
 
@@ -14,11 +14,11 @@ __Pageinator__ is a _jQuery_ plug-in to pageinate a number of items.
 
 ### How to use it
 
-1. Add `jquery.pageinator.js` to your project, along with _jQuery_ and _hashchange_.
+1. Add `jquery.paginator.js` to your project, along with _jQuery_ and _hashchange_.
 2. Add your items to your page, with a container element.
 3. Add the following _jQuery_ to your page, to be executed on load:
 
-    $('#pgn-container').pageinator();
+    $('#pgn-container').paginator();
 
 ...where `#pgn-container` is a selector for the item container.
 
@@ -26,7 +26,7 @@ A demo is available in demo.html.
 
 ### Additional settings
 
-Additional settings can be used to customise __Pageinator__, and should be added as a parameter within curly braces:
+Additional settings can be used to customise __Paginator__, and should be added as a parameter within curly braces:
 
 + `itemsPerPage`: How many items appear per page (default `6`; must be any integer greater than `0`).
 + `keyboardNavigation`: Whether the pages can be traversed using the left and right arrow keys (default `true`; must be boolean).
@@ -41,17 +41,19 @@ Additional settings can be used to customise __Pageinator__, and should be added
     
 An example of these in practice:
 
-    $('#pgn-container').pageinator({
+    $('#pgn-container').paginator({
         'itemsPerPage'     : 4
     });
 
-__Pageinator__ adds the page picker elements as `li` elements within a `ul`. You can easily customise it using rules for `ul#pgn-page-list` (items within this list are named `li#pgn-page-picker-previous`, `li#pgn-page-picker-next`, `li#pgn-page-picker-first`, `li#pgn-page-picker-last` and `li#pgn-page-picker-x`, where `x` is the page number).
+__Paginator__ adds the page picker elements as `li` elements within a `ul`. You can easily customise it using rules for `ul#pgn-page-list` (items within this list are named `li#pgn-page-picker-previous`, `li#pgn-page-picker-next`, `li#pgn-page-picker-first`, `li#pgn-page-picker-last` and `li#pgn-page-picker-x`, where `x` is the page number).
 
-### Where does it work?
-
-Tested in:
+### Compatibility
 
 + Firefox 9
+
+### Issues
+
++ Double-clicking the next or previous page buttons, or clicking adjacent page numbers in quick succession can cause the elements of two pages to be loaded onto the page. This only occurs when `fadeRate` is set to a value higher than about `80`, although it depends how quickly the user can click.
 
 ### Author and Acknowledgements
 

@@ -2,7 +2,7 @@
     
     'use strict';
     
-    $.fn.pageinator = function (options) {
+    $.fn.paginator = function (options) {
         
         var settings = $.extend({
             itemsPerPage       : 2,
