@@ -34,19 +34,20 @@
          * @param {integer}                      The page number to go to.
          */
         function showPage(pageNumber) {
+            pageNumber = parseInt(pageNumber, 10);
             if (pageNumber > 0 && pageNumber <= numberOfPages && pageNumber !== currentPage) {
                 currentPage = pageNumber;
                 location.hash = '#' + pageNumber;
                 if (numberOfPages > 1) {
-                    $previousPageLink.attr('data-page', parseInt(pageNumber, 10) - 1);
-                    $nextPageLink.attr('data-page', parseInt(pageNumber, 10) + 1);
+                    $previousPageLink.attr('data-page', pageNumber - 1);
+                    $nextPageLink.attr('data-page', pageNumber + 1);
                     $pageList.children().removeClass('pgn-page-picker-current').removeClass('pgn-page-picker-disabled');
                     $pageList.children('#pgn-page-picker-' + pageNumber).addClass('pgn-page-picker-current');
-                    if (pageNumber == 1) {
+                    if (pageNumber === 1) {
                         $previousPageLink.addClass('pgn-page-picker-disabled');
                         $firstPageLink.addClass('pgn-page-picker-disabled');
                     }
-                    if (pageNumber == numberOfPages) {
+                    if (pageNumber === numberOfPages) {
                         $nextPageLink.addClass('pgn-page-picker-disabled');
                         $lastPageLink.addClass('pgn-page-picker-disabled');
                     }
