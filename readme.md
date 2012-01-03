@@ -28,14 +28,14 @@ A demo is available in demo.html.
 
 Additional settings can be used to customise __Pageinator__, and should be added as a parameter within curly braces:
 
-+ `itemsPerPage` sets how many items appear per page (default `6`).
-+ `keyboardNavigation` toggles whether or not the user can use the left and right arrow keys to move through pages (default `false`).
-+ `prevButtonContent` allows you to change the content of the previous page button (default `&lt;`).
-+ `nextButtonContent` allows you to change the content of the next page button (default `&gt;`).
-+ `pageButtonClass` allows you to set a custom class for page buttons (default `false`).
-+ `fadeRate` sets the speed at which pages fade in and out (default `0`).
-+ `fixedHeight` toggles whether or not the container should have a fixed height (default `false`).
-+ `heightDivisor` sets a number to divide the itemsPerPage value by before multiplying it with the items' height when setting a fixed height for the container (only active when `fixedHeight` is `true`; default `1`).
++ `itemsPerPage`: How many items appear per page (default `6`; must be any integer greater than `0`).
++ `keyboardNavigation`: Whether the pages can be traversed using the left and right arrow keys (default `true`; must be boolean).
++ `prevButtonContent`: The contents of the previous page `li` element (default `&lt;`; must be a string).
++ `nextButtonContent`: The contents of the next page `li` element (default `&gt;`; must be a string).
++ `pageButtonClass`: A custom class name for page button `li` elements (default `false`; must be boolean `false` or a string).
++ `fadeRate`: The rate at which pages fade in and out (default `0`; must be an integer greater than or equal to `0` or the strings `'fast'` or `'slow'`).
++ `fixedHeight`: Whether or not the page container has a fixed height (default `false`; must be boolean).
++ `heightDivisor`: A number to divide `itemsPerPage` (set above) by before multiplying it with the items' height. This value is used as the height of the container when `fixedHeight` (set above) is `true` (default `1`; must be a number).
     
 An example of these in practice:
 
