@@ -1,7 +1,7 @@
 Paginator
 =============
 
-Version 0.1.0
+Version 1.0.1
 -----------
 
 ### Introduction
@@ -18,7 +18,7 @@ __Paginator__ is a _jQuery_ plug-in to spread a number of items over various pag
 2. Add your items to your page, with a container element.
 3. Add the following _jQuery_ to your page, to be executed on load:
 
-    $('#pgn-container').paginator();
+	$('#pgn-container').paginator();
 
 ...where `#pgn-container` is a selector for the item container.
 
@@ -38,12 +38,12 @@ Additional settings can be used to customise __Paginator__, and should be added 
 + `fadeRate`: The rate at which pages fade in and out (default `0`; must be an integer greater than or equal to `0` or the strings `'fast'` or `'slow'`).
 + `fixedHeight`: Whether or not the page container has a fixed height (default `false`; must be boolean).
 + `heightDivisor`: A number to divide `itemsPerPage` (set above) by before multiplying it with the items' height. This value is used as the height of the container when `fixedHeight` (set above) is `true` (default `1`; must be a number).
-    
+
 An example of these in practice:
 
-    $('#pgn-container').paginator({
-        'itemsPerPage'     : 4
-    });
+	$('#pgn-container').paginator({
+		'itemsPerPage' : 4
+	});
 
 __Paginator__ adds the page picker elements as `li` elements within a `ul`. You can easily customise it using rules for `ul#pgn-page-list` (items within this list are named `li#pgn-page-picker-previous`, `li#pgn-page-picker-next`, `li#pgn-page-picker-first`, `li#pgn-page-picker-last` and `li#pgn-page-picker-x`, where `x` is the page number).
 

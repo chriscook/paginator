@@ -1,31 +1,41 @@
 {
-    "name": "pgnPaginator",
-    "version": "0.1.0",
-    "title": "Paginator",
-    "author": {
-        "name": "Chris Cook",
-        "url": "http://chris-cook.co.uk/"
-    },
-    "licenses": [
-        {
-            "type": "GPL",
-            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
-        }
-    ],
-    "dependencies": {
-        "jquery": ">1.6",
-        "hashchange": ">1.3"
-    },
-    "description": "Paginates a collection of items.",
-    "keywords": [
-        "pages",
-        "pagination",
-        "navigation",
-        "sort"
-    ],
-    "homepage": "http://chris-cook.co.uk/",
-    "files": [
-        "jquery.paginator.js",
-        "jquery.hashchange.js"
-    ]
+	"name": "Paginator",
+	"version": "1.0.1",
+	"title": "Paginator",
+	"author": {
+		"name": "Chris Cook",
+		"url": "http://chris-cook.co.uk"
+	},
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "MIT-LICENSE.txt"
+		},
+		{
+			"type": "GPLv2",
+			"url": "GPL-LICENSE.txt"
+		}
+	],
+	"dependencies": {
+		"jquery": "1",
+		"hashchange" : "1.3"
+	},
+	"description": "Paginates a collection of items.",
+	"keywords": [
+		"pages",
+		"navigation"
+	],
+	"homepage": "http://chris-cook.co.uk",
+	"maintainers": [
+		{
+			"name": "Chris Cook",
+			"url": "http://chris-cook.co.uk"
+		}
+	],
+	"files": [
+		"demo.html",
+		"jquery.hashchange.js",
+		"jquery.paginator.js",
+		"readme.md"
+	]
 }

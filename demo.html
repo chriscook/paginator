@@ -2,114 +2,114 @@
 
 <html lang="en">
 
-    <head>
-        <title>Paginator</title>
-        <style>
-            html {
-                font-family: Calibri, Arial, sans-serif;
-            }
-            
-            #pgn-container {
-                overflow: auto;
-                width: 78%;
-                padding: 1em 1%;
-                margin: 0 auto;
-                background: #EEE;
-            }
-                
-                #pgn-container > div {
-                    display: none;
-                    float: left;
-                    width: 48%;
-                    height: 10em;
-                    margin: 1em 1%;
-                    background: #DDD;
-                }
-                
-            #pgn-page-list {
-                margin-top: 1em;
-            }
-                
-                #pgn-page-list > li {
-                    padding: 0 0.5em;
-                    margin: 0 0.5em;
-                    text-align: center;
-                    font-size: 2em;
-                    background: #EEE;
-                    cursor: pointer;
-                    list-style-type: none;
-                    float: left;
-                }
-                
-                #pgn-page-list > li.pgn-page-picker-current {
-                    background: #DDD;
-                }
-                
-                #pgn-page-list > li.pgn-page-picker-disabled {
-                    background: #FFF;
-                }
-        </style>
-    </head>
-    
-    <body>
-        
-        <div id="pgn-container">
-            <div>
-                <h2>First item</h2>
-                <p>Text text text text text text text text.</p>
-            </div>
-            <div>
-                <h2>Second item</h2>
-                <p>Text text text text text text text text.</p>
-            </div>
-            <div>
-                <h2>Third item</h2>
-                <p>Text text text text text text text text.</p>
-            </div>
-            <div>
-                <h2>Fourth item</h2>
-                <p>Text text text text text text text text.</p>
-            </div>
-            <div>
-                <h2>Fifth item</h2>
-                <p>Text text text text text text text text.</p>
-            </div>
-            <div>
-                <h2>Sixth item</h2>
-                <p>Text text text text text text text text.</p>
-            </div>
-            <div>
-                <h2>Seventh item</h2>
-                <p>Text text text text text text text text.</p>
-            </div>
-            <div>
-                <h2>Eighth item</h2>
-                <p>Text text text text text text text text.</p>
-            </div>
-            <div>
-                <h2>Ninth item</h2>
-                <p>Text text text text text text text text.</p>
-            </div>
-            <div>
-                <h2>Tenth item</h2>
-                <p>Text text text text text text text text.</p>
-            </div>
-        </div>
-        
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="jquery.hashchange.js"></script>
-        <script src="jquery.paginator.js"></script>
-        <script>
-            $(document).ready(function() {
-                $('div#pgn-container').paginator({
-                    itemsPerPage       : 2,
-                    keyboardNavigation : true,
-                    fadeRate           : 'fast',
-                    fixedHeight        : true
-                });
-            });
-        </script>
-        
-    </body>
-    
+	<head>
+		<title>Paginator demo</title>
+		<style>
+			html {
+				font-family: Calibri, Arial, sans-serif;
+			}
+
+			#pgn-container {
+				overflow: auto;
+				width: 78%;
+				padding: 1em 1%;
+				margin: 0 auto;
+				background: #EEE;
+			}
+
+				#pgn-container > div {
+					display: none;
+					float: left;
+					width: 48%;
+					height: 10em;
+					margin: 1em 1%;
+					background: #DDD;
+				}
+
+			#pgn-page-list {
+				margin-top: 1em;
+			}
+
+				#pgn-page-list > li {
+					padding: 0 0.5em;
+					margin: 0 0.5em;
+					text-align: center;
+					font-size: 2em;
+					background: #EEE;
+					cursor: pointer;
+					list-style-type: none;
+					float: left;
+				}
+
+				#pgn-page-list > li.pgn-page-picker-current {
+					background: #DDD;
+				}
+
+				#pgn-page-list > li.pgn-page-picker-disabled {
+					background: #FFF;
+				}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="pgn-container">
+			<div>
+				<h2>First item</h2>
+				<p>Text text text text text text text text.</p>
+			</div>
+			<div>
+				<h2>Second item</h2>
+				<p>Text text text text text text text text.</p>
+			</div>
+			<div>
+				<h2>Third item</h2>
+				<p>Text text text text text text text text.</p>
+			</div>
+			<div>
+				<h2>Fourth item</h2>
+				<p>Text text text text text text text text.</p>
+			</div>
+			<div>
+				<h2>Fifth item</h2>
+				<p>Text text text text text text text text.</p>
+			</div>
+			<div>
+				<h2>Sixth item</h2>
+				<p>Text text text text text text text text.</p>
+			</div>
+			<div>
+				<h2>Seventh item</h2>
+				<p>Text text text text text text text text.</p>
+			</div>
+			<div>
+				<h2>Eighth item</h2>
+				<p>Text text text text text text text text.</p>
+			</div>
+			<div>
+				<h2>Ninth item</h2>
+				<p>Text text text text text text text text.</p>
+			</div>
+			<div>
+				<h2>Tenth item</h2>
+				<p>Text text text text text text text text.</p>
+			</div>
+		</div>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="jquery.hashchange.js"></script>
+		<script src="jquery.paginator.js"></script>
+		<script>
+			$(function () {
+				$('div#pgn-container').paginator({
+					itemsPerPage : 2,
+					keyboardNavigation : true,
+					fadeRate : 'fast',
+					fixedHeight : true
+				});
+			});
+		</script>
+
+	</body>
+
 </html>
