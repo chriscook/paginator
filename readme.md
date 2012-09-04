@@ -1,8 +1,8 @@
 Paginator
-=============
+=========
 
 Version 1.0.1
------------
+-------------
 
 ### Introduction
 
@@ -10,7 +10,7 @@ __Paginator__ is a _jQuery_ plug-in to spread a number of items over various pag
 
 ## Dependencies
 
-+ _hashchange_
++ [_hashchange_](http://benalman.com/projects/jquery-hashchange-plugin/)
 
 ### How to use it
 
@@ -18,7 +18,9 @@ __Paginator__ is a _jQuery_ plug-in to spread a number of items over various pag
 2. Add your items to your page, with a container element.
 3. Add the following _jQuery_ to your page, to be executed on load:
 
+```javascript
 	$('#pgn-container').paginator();
+```
 
 ...where `#pgn-container` is a selector for the item container.
 
@@ -41,15 +43,13 @@ Additional settings can be used to customise __Paginator__, and should be added 
 
 An example of these in practice:
 
+```javascript
 	$('#pgn-container').paginator({
 		'itemsPerPage' : 4
 	});
+```
 
 __Paginator__ adds the page picker elements as `li` elements within a `ul`. You can easily customise it using rules for `ul#pgn-page-list` (items within this list are named `li#pgn-page-picker-previous`, `li#pgn-page-picker-next`, `li#pgn-page-picker-first`, `li#pgn-page-picker-last` and `li#pgn-page-picker-x`, where `x` is the page number).
-
-### Compatibility
-
-+ Firefox 9
 
 ### Issues
 
